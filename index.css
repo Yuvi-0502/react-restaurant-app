@@ -1,0 +1,50 @@
+.header{
+    display:flex;
+    justify-content: space-between;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.nav-items>ul{
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-items>ul>li{
+    padding: 10px;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+}
+
+.restaurent-list{
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust card width as needed */
+  gap: 20px; /* Adjust gap between cards as needed */
+}
+.card{
+    width: 200px;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px;
+}
+.restaurent-list > .card{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.card > img{
+    width: 100px;
+}
+
+.shimmer-card{
+    width: 200px;
+    margin: 20px;
+    height: 200px;
+    background: lightgrey;
+}
+
+.menu{
+    display: flex;
+}
