@@ -25,7 +25,7 @@ const Header = () => {
       <button onClick={() => {setTitle("New Food App")}}>Change Title</button> */}
       <div className="nav-items">
         <ul>
-          <Link to="/home">
+          <Link to="/">
             <li>Home</li>
           </Link>
           <Link to="/about">
