@@ -1,6 +1,7 @@
 import { useState } from "react";
 import logo from "../assests/img/food_villa_image.jpeg";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const loggedIn = () => {
   return true;
@@ -18,6 +19,11 @@ const Header = () => {
   // console.log("Hari OM");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const isOnline = useOnline();
+
+  if (!isOnline) {
+    return <h1> Offline, please check your internet connection!! </h1>;
+  }
   return (
     <div className="header">
       <Title />
