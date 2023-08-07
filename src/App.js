@@ -18,7 +18,7 @@
 // Transitive Dependencies
 //Tree Shaking - removing unwanted code
 
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -29,8 +29,20 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurentMenu from "./components/RestaurentMenu";
 import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+//import Instamart from "./components/Instamart";
 
 //const heading = React.createElement("h1", {}, "Hello Everyone !");
+
+// Lazy loading
+// On Demand loading
+// Dynamic import
+// Chunking
+// Code Splitting
+
+
+const Instamart = lazy(() => import("./components/Instamart"));
+// Upon on demand loading -> upon render -> suspend loading
 
 const AppLayout = () => {
   return (
@@ -59,7 +71,7 @@ const appRouter = createBrowserRouter([
         children: [
           {
             path: "profile",
-            element: <Profile name={"Yuvi"}/>,
+            element: <Profile name={"Yuvi"} />,
           },
         ],
       },
@@ -70,6 +82,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurent/:id",
         element: <RestaurentMenu />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Instamart />
+          </Suspense>
+        ),
       },
     ],
   },
