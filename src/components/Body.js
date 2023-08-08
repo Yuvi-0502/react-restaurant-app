@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { restaurentList } from "../constants";
 import RestaurentCard from "./RestaurentCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   // const searchTxt = "KFC";
@@ -14,6 +15,8 @@ const Body = () => {
   // searchText  is a local state variable
   const [searchText, setSearchText] = useState(""); // To create state variable
   // console.log("Jai Shree Ram");
+
+  const {user, setUser} = useContext(UserContext);
 
   useEffect(() => {
     getRestaurents();
@@ -72,6 +75,12 @@ const Body = () => {
         >
           Search
         </button>
+        <input type="text" value={user.name} onChange={(e) =>{
+          setUser({
+            name:e.target.value,
+            email:"Random email"
+          })
+        }} />
       </div>
       <div className="restaurent-list flex flex-wrap">
         {filterRestaurent?.length == 0 ? (

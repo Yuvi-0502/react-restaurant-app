@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import logo from "../assests/img/food_villa_image.jpeg";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
+
 
 const loggedIn = () => {
   return true;
@@ -20,6 +22,8 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const isOnline = useOnline();
+  
+  const {user} = useContext(UserContext)
 
   if (!isOnline) {
     return <h1> Offline, please check your internet connection!! </h1>;
@@ -53,6 +57,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
+      <span className="p-10 font-bold text-red-800">{user.name}</span>
       {isLoggedIn ? (
         <button
           onClick={() => {
