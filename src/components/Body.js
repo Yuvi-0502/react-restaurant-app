@@ -75,12 +75,12 @@ const Body = () => {
         >
           Search
         </button>
-        <input type="text" value={user.name} onChange={(e) =>{
+        {/* <input type="text" value={user.name} onChange={(e) =>{
           setUser({
             name:e.target.value,
             email:"Random email"
           })
-        }} />
+        }} /> */}
       </div>
       <div className="restaurent-list flex flex-wrap">
         {filterRestaurent?.length == 0 ? (
