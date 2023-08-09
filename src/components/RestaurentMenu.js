@@ -30,18 +30,18 @@ const RestaurentMenu = () => {
   }
 
   return (
-    <div className="menu">
-      <div>
-        <h1>Restaurent id : {restaurent?.info?.id} </h1>
-        <h2>{restaurent?.info?.name}</h2>
-        <img src={IMG_URL + restaurent?.info?.cloudinaryImageId} alt="" />
+    <div className="menu flex">
+      <div className="m-2 p-2">
+        <h1 className="font-bold">Restaurent id : {restaurent?.info?.id} </h1>
+        <h2 className="font-bold">{restaurent?.info?.name}</h2>
+        <img src={IMG_URL + restaurent?.info?.cloudinaryImageId} alt="" className="m-2 p-2 w-56 shadow-lg bg-pink-500" />
         <h3>{restaurent?.info?.areaName}</h3>
         <h3>{restaurent?.info?.city}</h3>
         <h3>{restaurent?.info?.avgRating}</h3>
         <h3>{restaurent?.info?.costForTwoMessage}</h3>
       </div>
-      <div>
-        <h1> MENU </h1>
+      <div className="p-2 m-2">
+        <h1 className="font-bold"> MENU </h1>
         <ul>
           {(restaurent?.info?.name == "La Pino'z Pizza" || restaurent?.info?.name == "KFC" || restaurent?.info?.name == "Domino's Pizza" || restaurent?.info?.name == "Pizza Hut")? menu?.carousel?.map((item) => (
             <li key={item?.id}>{item?.title}</li>

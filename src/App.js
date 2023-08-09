@@ -18,7 +18,7 @@
 // Transitive Dependencies
 //Tree Shaking - removing unwanted code
 
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -31,6 +31,7 @@ import RestaurentMenu from "./components/RestaurentMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 //import Instamart from "./components/Instamart";
+import UserContext from "./utils/UserContext";
 
 //const heading = React.createElement("h1", {}, "Hello Everyone !");
 
@@ -40,17 +41,28 @@ import Shimmer from "./components/Shimmer";
 // Chunking
 // Code Splitting
 
-
 const Instamart = lazy(() => import("./components/Instamart"));
 // Upon on demand loading -> upon render -> suspend loading
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Yuvraj Singh Chouhan",
+    email: "yuvraj@gmail.com",
+  });
+
   return (
     <React.Fragment>
-      <Header />
-      {/* {Outlet} */}
-      <Outlet />
-      <Footer />
+      <UserContext.Provider
+        value={{
+          user: user,
+          setUser: setUser,
+        }}
+      >
+        <Header />
+        {/* {Outlet} */}
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
     </React.Fragment>
   );
 };

@@ -1,4 +1,23 @@
-.header{
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* You can do different type of css 
+ - Normal Css
+ - SCSS
+ - Inline css
+ - Styled Component
+ 
+ TailWind CSS framework
+  - CSS on go
+  - reusability
+  - Less bundle size
+  - Flexible UI
+  -  */
+
+/* .header{
     display:flex;
     justify-content: space-between;
     margin: 10px;
@@ -17,13 +36,16 @@
     width: 100px;
     height: 100px;
 }
+ */
 
-.restaurent-list{
-    display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust card width as needed */
-  gap: 20px; /* Adjust gap between cards as needed */
-}
-.card{
+ /* .restaurent-list{
+    display: grid; */
+    /* Adjust card width as needed */
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  */
+  /* Adjust gap between cards as needed */
+  /* gap: 20px; 
+} */
+/* .card{
     width: 200px;
     border: 1px solid black;
     padding: 20px;
@@ -47,4 +69,5 @@
 
 .menu{
     display: flex;
-}
+} */
+

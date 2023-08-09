@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { restaurentList } from "../constants";
 import RestaurentCard from "./RestaurentCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   // const searchTxt = "KFC";
@@ -14,6 +15,8 @@ const Body = () => {
   // searchText  is a local state variable
   const [searchText, setSearchText] = useState(""); // To create state variable
   // console.log("Jai Shree Ram");
+
+  const {user, setUser} = useContext(UserContext);
 
   useEffect(() => {
     getRestaurents();
@@ -50,10 +53,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="search-container">
+      <div className="search-container p-5 bg-pink-50 my-5">
         <input
           type="text"
-          className="search-input"
+          className="search-input focus:bg-green-50 p-2 m-2"
           placeholder="Search"
           value={searchText}
           onChange={(e) => {
@@ -61,7 +64,7 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
+          className="search-btn p-2 m-2 bg-purple-800 hover:bg-gray-500 text-white rounded-md"
           onClick={() => {
             // need to filter the data
             const data = filterData(searchText, restaurents);
@@ -72,8 +75,14 @@ const Body = () => {
         >
           Search
         </button>
+        {/* <input type="text" value={user.name} onChange={(e) =>{
+          setUser({
+            name:e.target.value,
+            email:"Random email"
+          })
+        }} /> */}
       </div>
-      <div className="restaurent-list">
+      <div className="restaurent-list flex flex-wrap">
         {filterRestaurent?.length == 0 ? (
           <h1>No Restaurant match to the filter</h1>
         ) : (
