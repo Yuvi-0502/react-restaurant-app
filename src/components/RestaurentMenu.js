@@ -3,14 +3,21 @@ import { useParams } from "react-router-dom";
 import { IMG_URL } from "../constants";
 import Shimmer from "./Shimmer";
 import useRestaurent from "../utils/useRestaurent";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const RestaurentMenu = () => {
   const params = useParams();
   const { id } = params;
   // const [restaurent, setRestaurent] = useState(null);
   // const [menu, setMenu] = useState([]);
+  const {restaurent, menu} = useRestaurent(id);
   
-  const {restaurent, menu} = useRestaurent(id); 
+  const dispatch = useDispatch();
+  
+  const addFoodItem = (item)=>{
+    dispatch(addItem(item));
+  }
 
 
   // useEffect(() => {
@@ -40,13 +47,18 @@ const RestaurentMenu = () => {
         <h3>{restaurent?.info?.avgRating}</h3>
         <h3>{restaurent?.info?.costForTwoMessage}</h3>
       </div>
+      <div>
+         <button className="p-2 m-2 bg-green-200" onClick={() =>{ handleAddItem()}}>Add Item</button>
+      </div>
       <div className="p-2 m-2">
         <h1 className="font-bold"> MENU </h1>
         <ul>
           {(restaurent?.info?.name == "La Pino'z Pizza" || restaurent?.info?.name == "KFC" || restaurent?.info?.name == "Domino's Pizza" || restaurent?.info?.name == "Pizza Hut")? menu?.carousel?.map((item) => (
             <li key={item?.id}>{item?.title}</li>
           )):menu?.itemCards?.map((item) => (
-            <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
+            <li key={item?.card?.info?.id}>
+              {item?.card?.info?.name} - <button className="p-1 bg-green-200" onClick={()=>{addFoodItem(item?.card?.info)}}>Add</button>
+              </li>
           ))}
         </ul>
       </div>
