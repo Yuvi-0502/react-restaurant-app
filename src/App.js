@@ -32,6 +32,9 @@ import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 //import Instamart from "./components/Instamart";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 
 //const heading = React.createElement("h1", {}, "Hello Everyone !");
 
@@ -52,6 +55,7 @@ const AppLayout = () => {
 
   return (
     <React.Fragment>
+      <Provider store={store}>
       <UserContext.Provider
         value={{
           user: user,
@@ -63,6 +67,7 @@ const AppLayout = () => {
         <Outlet />
         <Footer />
       </UserContext.Provider>
+      </Provider>
     </React.Fragment>
   );
 };
@@ -103,6 +108,10 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path:"/cart",
+        element:<Cart />
+      }
     ],
   },
 ]);

@@ -3,6 +3,7 @@ import logo from "../assests/img/food_villa_image.jpeg";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 
 const loggedIn = () => {
@@ -23,7 +24,10 @@ const Header = () => {
 
   const isOnline = useOnline();
   
-  const {user} = useContext(UserContext)
+  const {user} = useContext(UserContext);
+
+  const cartItems = useSelector((store) => store.cart.items);
+  
 
   if (!isOnline) {
     return <h1> Offline, please check your internet connection!! </h1>;
@@ -47,13 +51,11 @@ const Header = () => {
           <li className="px-2">
             <Link to="/contact">Contact</Link>
           </li>
-
-          <li className="px-2">
-            <Link to="/cart">Cart</Link>
-          </li>
-
           <li className="px-2">
             <Link to="/instamart">Instamart</Link>
+          </li>
+          <li className="px-2">
+            <Link to="/cart">Cart-{cartItems.length} items</Link>
           </li>
         </ul>
       </div>
