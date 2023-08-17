@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import { removeItem } from "../utils/cartSlice";
 
 const FoodItem = ({ category, name, price, inStock, isVeg , index}) => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   const handleRemoveCart = (index) => {
     dispatch(removeItem(index));
   
   };
   return (
-    <div className="card w-56 p-2 m-2 shadow-lg bg-blue-200">
+    <div className="card w-56 p-2 m-2 shadow-lg bg-blue-200" >
       <h1>{index}</h1>
       <h2 className="font-bold text-xl">Name - {name}</h2>
       <h3>Price - {price / 100}</h3>

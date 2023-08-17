@@ -13,7 +13,7 @@ const useRestaurent = (id) => {
   async function getRestaurentInfo() {
     const data = await fetch(FETCH_MENU_URL + id);
     const json = await data.json();
-    //console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card);
+    //.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card);
     //console.log(json.data.cards[0].card.card.info.name)
     setRestaurent(json?.data?.cards[0]?.card?.card);
     setMenu(
@@ -22,7 +22,7 @@ const useRestaurent = (id) => {
     );
   }
   // return restaurant data
-  return {restaurent, menu};
+  return { restaurent, menu };
 };
 
 export default useRestaurent;
