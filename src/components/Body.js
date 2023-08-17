@@ -50,11 +50,12 @@ const Body = () => {
   if (!restaurents) return <h1> No Restaurents Found </h1>;
 
   return restaurents?.length == 0 ? (
-    <Shimmer />
+    <Shimmer  />
   ) : (
     <div className="body">
       <div className="search-container p-5 bg-pink-50 my-5">
         <input
+         data-testid ="search-input"
           type="text"
           className="search-input focus:bg-green-50 p-2 m-2"
           placeholder="Search"
@@ -62,8 +63,10 @@ const Body = () => {
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
+          
         />
         <button
+        data-testid ="search-btn"
           className="search-btn p-2 m-2 bg-purple-800 hover:bg-gray-500 text-white rounded-md"
           onClick={() => {
             // need to filter the data
@@ -82,7 +85,7 @@ const Body = () => {
           })
         }} /> */}
       </div>
-      <div className="restaurent-list flex flex-wrap">
+      <div className="restaurent-list flex flex-wrap" data-testid="res-list">
         {filterRestaurent?.length == 0 ? (
           <h1>No Restaurant match to the filter</h1>
         ) : (
